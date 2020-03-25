@@ -4,7 +4,7 @@ class flatenSmart:
     __list=list()
     __cls=None
     __direction=int()
-    __counter==list()
+    __counter=list()
     def copy(self):
         obj=self.__class__(self.__list,self.__cls)
         obj.setState=self.getState()
@@ -19,8 +19,8 @@ class flatenSmart:
         self.__list=obj
         self.__direction=1 if direction>0 else -1
         self.__counter=[0 if direction>0 else -1]
-        if not hasattr(unwrp, '__getItem__'):raise "Base Object needs to have a __getItem__ method defined."
-        if not type(obj)==unwrp:raise "Base Object should be the instance of Unwrappable class"
+        if not hasattr(obj, '__getitem__'):raise BaseException("Base Object needs to have a __getItem__ method defined.")
+        if not type(obj)==unwrp:raise BaseException("Base Object should be the instance of Unwrappable class")
             
     def __iter__(self,sub=None):return self
     
@@ -43,4 +43,3 @@ class flatenSmart:
                 return next(self)
             self.__counter[-1]+=1 if direction>0 else -1
             return el
-        
